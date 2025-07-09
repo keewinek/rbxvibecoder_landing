@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.outfit {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+}
+
+.bg-noise {
+    background: url("./noise.png");
+    background-size: 100px;
+}
