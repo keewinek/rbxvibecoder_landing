@@ -2,7 +2,7 @@ import NavBar from "../islands/Nav.tsx";
 import * as s from "../islands/scroll_reveal.tsx";
 
 export default function Home() {
-  const DOWNLOAD_LINK = "../../downloads/Vibe Coder_v0.2.rbxmx";
+  const DOWNLOAD_LINK = "/downloads/Vibe Coder_v0.2.rbxmx";
   const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
   return (
     <div class="bg-gray-950 w-full h-full min-h-screen overflow-y-hidden overflow-x-hidden">
