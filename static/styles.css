@@ -17,3 +17,13 @@ body {
     background: url("./noise.png");
     background-size: 100px;
 }
+
+.scroll_reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.4,0,0.2,1), transform 500ms cubic-bezier(0.4,0,0.2,1);
+}
+.scroll_reveal.scroll_reveal--active {
+    opacity: 1;
+    transform: translateY(0);
+}

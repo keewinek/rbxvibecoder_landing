@@ -1,8 +1,10 @@
 import NavBar from "../islands/Nav.tsx";
-
+import * as s from "../islands/scroll_reveal.tsx";
+import DownloadButton from "../islands/DownloadButton.tsx";
 
 export default function Home() {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder_v0.2.rbxmx"
+  const DOWNLOAD_LINK = "/downloads/Vibe Coder_v0.2.rbxmx";
+  const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
   return (
     <div class="bg-gray-950 w-full h-full overflow-y-hidden overflow-x-hidden pb-14">
 		<NavBar DOWNLOAD_LINK={DOWNLOAD_LINK}/>
@@ -16,12 +18,15 @@ export default function Home() {
 					<h2 class="text-white text-2xl md:text-4xl font-bold text-left mb-4 w-full max-md:mt-4 max-md:text-center opacity-90">
 						Let AI do your scripting.
 					</h2>
-					<a href="/downloads/Vibe Coder_v0.2.rbxmx" download 
-					class="text-sm md:text-xl font-bold text-left break-words w-full mt-4 bg-white text-gray-950 px-4 py-2 rounded-xl shadow-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-3">
+					<DownloadButton
+						href={DOWNLOAD_LINK}
+						filename={DOWNLOAD_FILE_NAME}
+						class="text-sm md:text-xl font-bold text-left break-words w-full mt-4 bg-white text-gray-950 px-4 py-2 rounded-xl shadow-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-3"
+					>
 						<img src="RobloxStudioIcon.png" alt="Roblox Studio Icon" class="h-7 w-7 mr-2 inline-block"/>
 						<span>Download Vibe Coder for Roblox Studio</span>
-					</a>
-					
+					</DownloadButton>
+					<p class="text-[0.75rem] text-gray-200 opacity-75 mt-2 text-left w-full">You will download {DOWNLOAD_FILE_NAME}. Put this file in your roblox studio plugin folder.</p>
 				</div>
 				<div class="flex flex-col items-center justify-center flex-1 min-w-0 max-h-full w-full mt-0 md:mt-0">
 					<div class="rounded-xl shadow-lg w-full max-w-md">
@@ -50,33 +55,33 @@ export default function Home() {
 		</div>
 
 		<div class="mx-auto w-full max-w-[40rem] mt-8 max-md:px-8" id="about">
-			<h2 class="text-5xl text-white text-center font-bold py-16">You don't have to script anymore.</h2>
-			<p class="text-xl text-gray-200 text-justify mt-8">
+			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-16">You don't have to script anymore.</s.ScrollH2>
+			<s.ScrollP class="text-xl text-gray-200 text-justify mt-8">
 				Yeah, really. Just select an script in the explorer and tell Vibe Coder what it should become - an leaderstats creator, datastore handler or
 				an kill brick script. Vibe Coder will look at your project's hierarhy and take scripting decisions for you. It will also edit your scripts.
-			</p>
+			</s.ScrollP>
 
-			<img 
+			<s.ScrollIMG 
 				class="mx-auto rounded-xl mt-8 w-full"
 				src="/VibeCoderFullScreenshot.png"
 			/>
 		</div>
 
 		<div class="mx-auto w-full max-w-[40rem] mt-24 max-md:px-8">
-			<h2 class="text-5xl text-white text-center font-bold py-8">Batteries included</h2>
-			<p class="text-xl text-gray-200 text-justify mt-8">
+			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-8">Batteries included</s.ScrollH2>
+			<s.ScrollP class="text-xl text-gray-200 text-justify mt-8">
 				Vibe Coder supports all popular LLM's, including Gemini 2.5 Flash, Gemini 2.5 Pro, Gpt 4.1, Gpt 4o, Claude 4 Sonnet and Claude 3 Sonnet.
 				If you want another model to be added, just contact me.
-			</p>
+			</s.ScrollP>
 
-			<img 
+			<s.ScrollIMG  
 				class="mx-auto rounded-xl mt-8 w-full"
 				src="/VibeCoderFullScreenshot2.png"
 			/>
 		</div>
 
 		<div class="mx-auto w-full max-w-[40rem] mt-24 max-md:px-8" id="pricing">
-			<h2 class="text-5xl text-white text-center font-bold py-8">Pricing</h2>
+			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-8">Pricing</s.ScrollH2>
 			<div class="flex flex-col md:flex-row gap-8 justify-center items-stretch mt-12">
 				{/* Free Tier */}
 				<div class="flex-1 bg-[#232127] rounded-2xl shadow-lg p-8 flex flex-col items-center">
@@ -90,14 +95,14 @@ export default function Home() {
 						<li class="flex items-center gap-2"><span class="text-red-400">✗</span> No priority support</li>
 					</ul>
 					<div class="text-4xl font-extrabold text-white mb-4">Free</div>
-					<a 
+					<DownloadButton 
 						href={DOWNLOAD_LINK}
-						download
+						filename={DOWNLOAD_FILE_NAME}
 						class="bg-white text-[#232127] font-bold px-6 py-2 rounded-lg shadow hover:bg-gray-200 transition-colors duration-200 w-full flex items-center justify-center gap-2"
 					>
 						<img src="RobloxStudioIcon.png" alt="Roblox Studio Icon" class="h-6 w-6 inline-block"/>
 						<span>Download Plugin</span>
-					</a>
+					</DownloadButton>
 				</div>
 				{/* Pro Tier */}
 				<div class="flex-1 bg-gradient-to-br from-[#6d28d9] to-[#a21caf] rounded-2xl shadow-2xl p-8 flex flex-col items-center">
@@ -112,7 +117,7 @@ export default function Home() {
 					</ul>
 					<div class="text-4xl font-extrabold text-white mb-4 flex items-center gap-2">
 						2000
-						<img src="/robux.png" alt="Robux" class="h-10 w-10 inline-block" style="height: 2.5rem; width: 2.5rem;" />
+						<img src="/robux.png" alt="Robux" class="h-10 w-10 inline-block" style={{height: "2.5rem", width: "2.5rem"}} />
 					</div>
 					<a 
 						href="https://www.roblox.com/game-pass/1298233970/Vibe-Coder-PRO"
@@ -130,14 +135,14 @@ export default function Home() {
 		</div>
 	
 		<div class="mx-auto w-full max-w-[40rem] mt-24 max-md:px-8" id="contact">
-			<h2 class="text-5xl text-white text-center font-bold py-8">Contact</h2>
-			<p class="text-xl text-gray-200 text-justify mt-8">
+			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-8">Contact</s.ScrollH2>
+			<s.ScrollP class="text-xl text-gray-200 text-justify mt-8">
 				Vibe Coder was created by keewinek. You can see my website 
 				<a class="text-white font-bold hover:text-blue-200 hover:underline ml-[0.25rem]" href="https://keewinek.netlify.app">here</a>.
 				If you want to contact me, you can join my 
 				<a class="text-white font-bold hover:text-blue-200 hover:underline ml-[0.25rem]" href="https://keewinek.netlify.app/discord">discord server</a>. 
 				You can also email me: <span class="bg-black p-2 rounded-lg">keewinek@gmail.com</span>.
-			</p>
+			</s.ScrollP>
 		</div>
 	</div>
   );

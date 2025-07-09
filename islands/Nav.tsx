@@ -1,6 +1,8 @@
 import type { Signal } from "@preact/signals";
+import DownloadButton from "./DownloadButton.tsx";
 
-export default function NavBar({DOWNLOAD_LINK = ""}) {
+export default function NavBar({DOWNLOAD_LINK} : {DOWNLOAD_LINK: string}) {
+  const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
   return (
     <nav class="max-w-full overflow-x-hidden w-[60rem] py-3 my-4 max-md:my-0 px-4 mt-2 flex items-center justify-center rounded-3xl fixed top-0 left-1/2 -translate-x-1/2 z-10 backdrop-blur-sm">
         <div class="flex items-center justify-between w-full max-w-screen-lg mx-auto">
@@ -33,11 +35,14 @@ export default function NavBar({DOWNLOAD_LINK = ""}) {
             >Contact</a>
         </div>
         {/* Right download button */}
-        <a href={DOWNLOAD_LINK} download
-            class="text-sm md:text-base font-bold bg-white text-gray-950 px-5 py-2 rounded-xl shadow hover:bg-gray-200 transition-colors duration-200 flex items-center gap-2">
-            <img src="RobloxStudioIcon.png" alt="Roblox Studio Icon" class="h-6 w-6 inline-block"/>
-            <span>Download Plugin</span>
-        </a>
+        <DownloadButton
+          href={DOWNLOAD_LINK}
+          filename={DOWNLOAD_FILE_NAME}
+          class="text-sm md:text-base font-bold bg-white text-gray-950 px-5 py-2 rounded-xl shadow hover:bg-gray-200 transition-colors duration-200 flex items-center gap-2"
+        >
+          <img src="RobloxStudioIcon.png" alt="Roblox Studio Icon" class="h-6 w-6 inline-block"/>
+          <span>Download Plugin</span>
+        </DownloadButton>
         </div>
     </nav>
   );
