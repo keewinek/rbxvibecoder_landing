@@ -26,7 +26,9 @@ export default function NavBar({DOWNLOAD_LINK} : {DOWNLOAD_LINK: string}) {
         <div class="flex items-center justify-between w-full max-w-screen-lg mx-auto">
         {/* Left links */}
         <div class="flex items-center gap-6">
-            <a href="/" class="text-white text-lg font-semibold hover:underline">Home</a>
+            <a href="/" class="text-white text-lg font-semibold hover:underline">
+              <img src="/VibeCoderLogo_transparent.png" class="h-[3rem]"/>
+            </a>
             <a href="/#about" class="text-gray-300 text-lg font-medium hover:text-white hover:underline max-md:hidden"
                 onClick={handleNav("#about")}
             >About</a>
