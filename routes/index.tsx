@@ -2,9 +2,34 @@ import NavBar from "../islands/Nav.tsx";
 import * as s from "../islands/scroll_reveal.tsx";
 import DownloadButton from "../islands/DownloadButton.tsx";
 
-export default function Home() {
+// Add type for product info
+interface GamepassProductInfo {
+	PriceInRobux: number;
+}
+
+export default async function Home() {
   const DOWNLOAD_LINK = "/downloads/Vibe Coder_v0.2.rbxmx";
   const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
+  const GAMEPASS_LINK = "https://www.roblox.com/game-pass/1298233970/Vibe-Coder-PRO"
+
+  // Extract Gamepass ID from the link
+  const gamepassIdMatch = GAMEPASS_LINK.match(/game-pass\/(\d+)/);
+  const GAMEPASS_ID = gamepassIdMatch ? gamepassIdMatch[1] : null;
+
+  // Default price fallback
+  let gamepassPrice: number | null = null;
+  if (GAMEPASS_ID) {
+    try {
+      const res = await fetch(`https://apis.roblox.com/game-passes/v1/game-passes/${GAMEPASS_ID}/product-info`);
+      if (res.ok) {
+        const data: GamepassProductInfo = await res.json();
+        gamepassPrice = data.PriceInRobux;
+      }
+    } catch (e) {
+      // Ignore error, fallback to null
+    }
+  }
+
   return (
     <div class="bg-gray-950 w-full h-full overflow-y-hidden overflow-x-hidden pb-14">
 		<NavBar DOWNLOAD_LINK={DOWNLOAD_LINK}/>
@@ -115,12 +140,13 @@ export default function Home() {
 						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Custom API keys</li>
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Early access to new features</li>
 					</ul>
-					<div class="text-4xl font-extrabold text-white mb-4 flex items-center gap-2">
-						2000
-						<img src="/robux.png" alt="Robux" class="h-10 w-10 inline-block" style={{height: "2.5rem", width: "2.5rem"}} />
+					<div className="text-4xl font-extrabold text-white mb-4 flex items-center gap-2">
+						{/* Price in robux */}
+						{gamepassPrice !== null ? gamepassPrice : "Gamepass"}
+						<img src="/robux.png" alt="Robux" className="h-10 w-10 inline-block" style={{height: "2.5rem", width: "2.5rem"}} />
 					</div>
 					<a 
-						href="https://www.roblox.com/game-pass/1298233970/Vibe-Coder-PRO"
+						href={GAMEPASS_LINK}
 						target="_blank"
 						class="bg-white font-bold px-6 py-2 rounded-lg shadow hover:bg-gray-200 transition-colors duration-200 w-full flex items-center justify-center gap-2"
 					>
