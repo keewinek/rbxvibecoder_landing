@@ -9,6 +9,19 @@ export default function App({ Component }: PageProps) {
         <meta name="description" content="Vibe Coder is an AI-powered Roblox Studio plugin that automates scripting, supports all major LLMs, and helps you create, edit, and manage scripts effortlessly." />
         <meta name="keywords" content="Roblox, AI, scripting, plugin, Vibe Coder, Roblox Studio, automation, GPT, Gemini, Claude, game development, code assistant" />
         <meta name="author" content="keewinek" />
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J51SP09KHK"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-J51SP09KHK');
+            `,
+          }}
+        />
+
         {/* Open Graph / Facebook */}
         <meta property="og:title" content="Vibe Coder - Let AI do your roblox scripting." />
         <meta property="og:description" content="Yeah you dont have to script anymore." />
