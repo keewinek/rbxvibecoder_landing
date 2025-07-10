@@ -8,7 +8,7 @@ interface GamepassProductInfo {
 }
 
 export default async function Home() {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder_v0.3.rbxmx";
+  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.3.rbxmx";
   const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
   const GAMEPASS_LINK = "https://www.roblox.com/game-pass/1298233970/Vibe-Coder-PRO"
 
