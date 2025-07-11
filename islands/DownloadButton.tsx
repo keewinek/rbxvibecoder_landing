@@ -20,9 +20,9 @@ export default function DownloadButton({ href, filename, class: className, child
     e.preventDefault();
     // Fire Google Analytics event for download
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag('event', 'download_clicked', {
+      window.gtag('event', 'plugin_download', {
         event_category: 'engagement',
-        event_label: 'rbx_plugin',
+        event_label: 'plugin_download',
       });
     }
     // Create a temporary link to trigger download
