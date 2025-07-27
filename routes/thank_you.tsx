@@ -12,14 +12,18 @@ export default function Home() {
 			<s.ScrollH1 class="text-8xl text-white text-center font-bold pt-16">Thank You</s.ScrollH1>
 			<s.ScrollH2 class="text-xl text-gray-400 text-center font-bold pt-4 pb-16">For downlading Vibe Coder.</s.ScrollH2>
 			<s.ScrollP class="text-xl text-gray-400 text-left font-bold pt-4 pb-0">Here is installation guide:</s.ScrollP>
-			<video
-				class="w-full rounded-xl shadow-lg mt-4"
-				controls
-				poster="/VibeCoderTutorialPoster.png"
-			>
-				<source src="/VibeCoderTutorial.mp4" type="video/mp4" />
-				Your browser does not support the video tag.
-			</video>
+			
+			<iframe 
+				class="mx-auto my-2 rounded-md"
+				width="640" 
+				height="400" 
+				src="https://www.youtube.com/embed/tY58OhqVGeY?si=fMu6ZfgePUqiZZQQ" 
+				title="YouTube video player" 
+				frameborder="0" 
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+				referrerpolicy="strict-origin-when-cross-origin" 
+				allowFullScreen>
+			</iframe>
 
 			<s.ScrollP class="text-xl text-gray-400 text-left font-bold pt-16 pb-0">If the video doesn't load for you, heres the guide:</s.ScrollP>
 			<s.ScrollP class="text-xl text-gray-400 text-left font-bold pt-2 pb-0">1. Open Roblox Studio</s.ScrollP>
