@@ -3,7 +3,7 @@ export default function NewsPopup() {
     return (
     <div class="w-full max-w-xl rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-3 shadow-lg mb-4">
         <p class="text-sm md:text-base font-medium text-center">
-          Are you an investor, studio or developer? I am willing to sell Vibe Coder for $10,000USD. Join my {" "}
+          Are you an investor, studio or developer? I am willing to sell Vibe Coder, as I dont have much time to develop it. Join my {" "}
           <a 
             href="https://keewinek.netlify.app/discord" 
             target="_blank" 
