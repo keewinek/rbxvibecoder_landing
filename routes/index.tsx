@@ -1,6 +1,7 @@
 import NavBar from "../islands/Nav.tsx";
 import * as s from "../islands/scroll_reveal.tsx";
 import DownloadButton from "../islands/DownloadButton.tsx";
+import NewsPopup from "../islands/NewsPopup.tsx";
 
 // Add type for product info
 interface GamepassProductInfo {
@@ -34,8 +35,8 @@ export default async function Home() {
     <div class="bg-gray-950 w-full h-full overflow-y-hidden overflow-x-hidden pb-14">
 		<NavBar DOWNLOAD_LINK={DOWNLOAD_LINK}/>
 
-		<div class="flex flex-col items-center justify-center h-screen px-10 pb-6 bg-noise mb-4 max-md:pt-32">
-			<div class="flex flex-col md:flex-row items-center justify-center mx-auto h-full gap-8 md:gap-[7rem] max-md:w-full">
+		<div class="flex flex-col items-center justify-center h-screen px-10 pb-6 bg-noise mb-4">
+			<div class="flex flex-col md:flex-row items-center justify-center mx-auto h-full gap-8 md:gap-[7rem] max-md:pt-32 max-md:w-full">
 				<div class="flex flex-col items-center justify-center flex-1 max-h-full min-w-[0] md:min-w-[32rem] w-full">
 					<h1 class="text-white text-5xl md:text-8xl font-bold text-left w-full max-md:text-center">
 						Vibe Coder
@@ -43,10 +44,11 @@ export default async function Home() {
 					<h2 class="text-white text-2xl md:text-4xl font-bold text-left mb-4 w-full max-md:mt-4 max-md:text-center opacity-90">
 						Let AI do your scripting.
 					</h2>
+					<NewsPopup />
 					<DownloadButton
 						href={DOWNLOAD_LINK}
 						filename={DOWNLOAD_FILE_NAME}
-						class="text-sm md:text-xl font-bold text-left break-words w-full mt-4 bg-white text-gray-950 px-4 py-2 rounded-xl shadow-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-3"
+						class="text-sm md:text-xl font-bold text-left break-words w-full mt-0 bg-white text-gray-950 px-4 py-2 rounded-xl shadow-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-3"
 					>
 						<img src="RobloxStudioIcon.png" alt="Roblox Studio Icon" class="h-7 w-7 mr-2 inline-block"/>
 						<span>Download Vibe Coder for Roblox Studio</span>

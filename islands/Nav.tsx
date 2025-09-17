@@ -22,7 +22,7 @@ export default function NavBar({DOWNLOAD_LINK} : {DOWNLOAD_LINK: string}) {
   };
 
   return (
-    <nav class="max-w-full overflow-x-hidden w-[60rem] py-3 my-4 max-md:my-0 px-4 mt-2 flex items-center justify-center rounded-3xl fixed top-0 left-1/2 -translate-x-1/2 z-10 backdrop-blur-sm">
+    <nav class="max-w-full overflow-x-hidden w-[60rem] py-3 my-4 max-md:my-0 px-4 mt-2 flex items-center justify-center rounded-3xl fixed left-1/2 -translate-x-1/2 z-10 backdrop-blur-sm" style="top: var(--popup-height, 0px);">
         <div class="flex items-center justify-between w-full max-w-screen-lg mx-auto">
         {/* Left links */}
         <div class="flex items-center gap-6">

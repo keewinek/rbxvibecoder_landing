@@ -11,6 +11,7 @@ import * as $thank_you from "./routes/thank_you.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $DownloadButton from "./islands/DownloadButton.tsx";
 import * as $Nav from "./islands/Nav.tsx";
+import * as $NewsPopup from "./islands/NewsPopup.tsx";
 import * as $scroll_reveal from "./islands/scroll_reveal.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -27,6 +28,7 @@ const manifest = {
     "./islands/Counter.tsx": $Counter,
     "./islands/DownloadButton.tsx": $DownloadButton,
     "./islands/Nav.tsx": $Nav,
+    "./islands/NewsPopup.tsx": $NewsPopup,
     "./islands/scroll_reveal.tsx": $scroll_reveal,
   },
   baseUrl: import.meta.url,
