@@ -141,6 +141,8 @@ export default async function Home() {
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Priority support</li>
 						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Custom API keys</li>
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Early access to new features</li>
+						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Free Gemini tokens. (No need for API keys)</li>
+						<li class="flex items-center gap-2"><span class="text-red-400">✗</span> NO FREE GPT, CLAUDE TOKENS! You need to enter your own API keys for theese models.</li>
 					</ul>
 					<div className="text-4xl font-extrabold text-white mb-4 flex items-center gap-2">
 						{/* Price in robux */}
