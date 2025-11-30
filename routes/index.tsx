@@ -9,27 +9,12 @@ interface GamepassProductInfo {
 }
 
 export default async function Home() {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.4.rbxmx";
+  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.5.rbxmx";
   const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
-  const GAMEPASS_LINK = "https://www.roblox.com/game-pass/1298233970/Vibe-Coder-PRO"
-
-  // Extract Gamepass ID from the link
-  const gamepassIdMatch = GAMEPASS_LINK.match(/game-pass\/(\d+)/);
-  const GAMEPASS_ID = gamepassIdMatch ? gamepassIdMatch[1] : null;
+  const GAMEPASS_LINK = "https://www.roblox.com/catalog/79884753121491/Vibe-Coder-PRO"
 
   // Default price fallback
-  let gamepassPrice: number | null = null;
-  if (GAMEPASS_ID) {
-    try {
-      const res = await fetch(`https://apis.roblox.com/game-passes/v1/game-passes/${GAMEPASS_ID}/product-info`);
-      if (res.ok) {
-        const data: GamepassProductInfo = await res.json();
-        gamepassPrice = data.PriceInRobux;
-      }
-    } catch (e) {
-      // Ignore error, fallback to null
-    }
-  }
+  const gamepassPrice: number = 2499;
 
   return (
     <div class="bg-gray-950 w-full h-full overflow-y-hidden overflow-x-hidden pb-14">
@@ -157,7 +142,7 @@ export default async function Home() {
 						<span
 							class="bg-gradient-to-r from-[#a78bfa] via-[#f472b6] to-[#818cf8] bg-clip-text text-transparent"
 						>
-							Buy PRO Gamepass
+							Buy PRO
 						</span>
 					</a>
 				</div>
