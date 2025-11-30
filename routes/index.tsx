@@ -29,7 +29,7 @@ export default async function Home() {
 					<h2 class="text-white text-2xl md:text-4xl font-bold text-left mb-4 w-full max-md:mt-4 max-md:text-center opacity-90">
 						Let AI do your scripting.
 					</h2>
-					<NewsPopup />
+					{/* <NewsPopup /> */}
 					<DownloadButton
 						href={DOWNLOAD_LINK}
 						filename={DOWNLOAD_FILE_NAME}
@@ -126,7 +126,6 @@ export default async function Home() {
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Priority support</li>
 						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Custom API keys</li>
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Early access to new features</li>
-						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Free Gemini tokens. (No need for API keys)</li>
 					</ul>
 					<div className="text-4xl font-extrabold text-white mb-4 flex items-center gap-2">
 						{/* Price in robux */}
