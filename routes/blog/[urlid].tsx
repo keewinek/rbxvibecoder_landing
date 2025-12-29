@@ -57,24 +57,30 @@ export default async function ArticlePage(props: PageProps) {
   let error: string | null = null;
 
   try {
-    const response = await fetch(
-      `https://zthype.deno.dev/api/get_article?urlid=${urlid}&source_ids=${sourceIds}`
-    );
+    const url = `https://zthype.deno.dev/api/get_article?urlid=${encodeURIComponent(urlid)}&source_ids=${encodeURIComponent(sourceIds)}`;
+    const response = await fetch(url);
     
     if (!response.ok) {
       if (response.status === 404) {
         error = "not_found";
       } else {
-        throw new Error(`API returned ${response.status}`);
+        throw new Error(`API returned ${response.status}: ${response.statusText}`);
       }
     } else {
-      articleData = await response.json();
-      if (!articleData.success || !articleData.article) {
+      const data = await response.json();
+      
+      if (!data.success) {
         error = "not_found";
+        console.warn("API returned unsuccessful response:", data);
+      } else if (!data.article) {
+        error = "not_found";
+        console.warn("API response missing article:", data);
+      } else {
+        articleData = data;
       }
     }
   } catch (err) {
-    error = err instanceof Error ? err.message : "Failed to load article";
+    error = "not_found";
     console.error("Error fetching article:", err);
   }
 

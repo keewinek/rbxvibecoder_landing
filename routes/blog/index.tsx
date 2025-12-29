@@ -24,7 +24,7 @@ export default async function BlogIndex(_props: PageProps) {
   let error: string | null = null;
 
   try {
-    const url = `https://zthype.deno.dev/api/get_articles_from_source_ids?source_ids=${encodeURIComponent(sourceIds)}`;
+    const url = `https://zthype.deno.dev/api/get_articles_form_source_ids?source_ids=${encodeURIComponent(sourceIds)}`;
     const response = await fetch(url);
     
     if (!response.ok) {
