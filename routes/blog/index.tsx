@@ -7,7 +7,7 @@ interface Article {
   urlid: string;
   source_id: string;
   created_at: number;
-  img_urls: string[];
+  img_urls?: string[];
   paragraph?: string;
 }
 
@@ -24,16 +24,25 @@ export default async function BlogIndex(_props: PageProps) {
   let error: string | null = null;
 
   try {
-    const response = await fetch(
-      `https://zthype.deno.dev/api/get_articles_form_source_ids?source_ids=${sourceIds}`
-    );
+    const url = `https://zthype.deno.dev/api/get_articles_from_source_ids?source_ids=${encodeURIComponent(sourceIds)}`;
+    const response = await fetch(url);
     
     if (!response.ok) {
-      throw new Error(`API returned ${response.status}`);
+      throw new Error(`API returned ${response.status}: ${response.statusText}`);
     }
     
     const data: ArticlesResponse = await response.json();
-    articles = data.articles || [];
+    
+    if (!data.success) {
+      throw new Error("API returned unsuccessful response");
+    }
+    
+    if (!data.articles) {
+      console.warn("API response missing articles array");
+      articles = [];
+    } else {
+      articles = data.articles;
+    }
     
     // Sort articles by created_at (newest first)
     articles.sort((a, b) => b.created_at - a.created_at);
