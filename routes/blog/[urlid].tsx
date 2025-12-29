@@ -1,5 +1,6 @@
 import { PageProps } from "$fresh/server.ts";
 import NavBar from "../../islands/Nav.tsx";
+import ArticleLoader from "../../islands/ArticleLoader.tsx";
 
 interface Paragraph {
   header?: string;
@@ -83,23 +84,18 @@ export default async function ArticlePage(props: PageProps) {
   }
 
   if (error === "not_found" || !articleData) {
+    // Try loading on client side as fallback
     return (
       <>
         <head>
-          <title>Article Not Found - Vibe Coder</title>
+          <title>Loading Article - Vibe Coder</title>
+          <meta name="description" content="Loading article..." />
+          <meta property="og:title" content="Loading Article - Vibe Coder" />
+          <meta property="og:description" content="Loading article..." />
         </head>
         <div class="bg-gray-950 w-full min-h-screen">
           <NavBar DOWNLOAD_LINK={DOWNLOAD_LINK} />
-          <div class="container mx-auto px-4 py-8 pt-24 max-w-4xl">
-            <h1 class="text-4xl text-white font-bold mb-4">Article Not Found</h1>
-            <p class="text-gray-300 mb-6">The article you're looking for doesn't exist or has been removed.</p>
-            <a 
-              href="/blog" 
-              class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors"
-            >
-              ← Back to Blog
-            </a>
-          </div>
+          <ArticleLoader urlid={urlid} sourceIds={sourceIds} downloadLink={DOWNLOAD_LINK} />
         </div>
       </>
     );
