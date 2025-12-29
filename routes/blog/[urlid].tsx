@@ -59,25 +59,23 @@ export default async function ArticlePage(props: PageProps) {
   try {
     const url = `https://zthype.deno.dev/api/get_article?urlid=${encodeURIComponent(urlid)}&source_ids=${encodeURIComponent(sourceIds)}`;
     const response = await fetch(url);
+    const data = await response.json();
     
-    if (!response.ok) {
-      if (response.status === 404) {
-        error = "not_found";
-      } else {
-        throw new Error(`API returned ${response.status}: ${response.statusText}`);
-      }
+    // Check if API returned an error
+    if ('error' in data) {
+      error = "not_found";
+      console.warn("API returned error:", data.error);
+    } else if (!response.ok) {
+      error = "not_found";
+      console.warn("API returned non-OK status:", response.status, data);
+    } else if (!data.success) {
+      error = "not_found";
+      console.warn("API returned unsuccessful response:", data);
+    } else if (!data.article) {
+      error = "not_found";
+      console.warn("API response missing article:", data);
     } else {
-      const data = await response.json();
-      
-      if (!data.success) {
-        error = "not_found";
-        console.warn("API returned unsuccessful response:", data);
-      } else if (!data.article) {
-        error = "not_found";
-        console.warn("API response missing article:", data);
-      } else {
-        articleData = data;
-      }
+      articleData = data;
     }
   } catch (err) {
     error = "not_found";

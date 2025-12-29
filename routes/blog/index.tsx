@@ -26,12 +26,16 @@ export default async function BlogIndex(_props: PageProps) {
   try {
     const url = `https://zthype.deno.dev/api/get_articles_form_source_ids?source_ids=${encodeURIComponent(sourceIds)}`;
     const response = await fetch(url);
+    const data: ArticlesResponse | { error: string } = await response.json();
+    
+    // Check if API returned an error
+    if ('error' in data) {
+      throw new Error(data.error || "API returned an error");
+    }
     
     if (!response.ok) {
       throw new Error(`API returned ${response.status}: ${response.statusText}`);
     }
-    
-    const data: ArticlesResponse = await response.json();
     
     if (!data.success) {
       throw new Error("API returned unsuccessful response");
