@@ -10,6 +10,7 @@ import * as $blog_index from "./routes/blog/index.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $thank_you from "./routes/thank_you.tsx";
+import * as $ArticleLoader from "./islands/ArticleLoader.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $DownloadButton from "./islands/DownloadButton.tsx";
 import * as $Nav from "./islands/Nav.tsx";
@@ -29,6 +30,7 @@ const manifest = {
     "./routes/thank_you.tsx": $thank_you,
   },
   islands: {
+    "./islands/ArticleLoader.tsx": $ArticleLoader,
     "./islands/Counter.tsx": $Counter,
     "./islands/DownloadButton.tsx": $DownloadButton,
     "./islands/Nav.tsx": $Nav,

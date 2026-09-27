@@ -35,6 +35,9 @@ export default function NavBar({DOWNLOAD_LINK} : {DOWNLOAD_LINK: string}) {
             <a href="/#pricing" class="text-gray-300 text-lg font-medium hover:text-white hover:underline"
                 onClick={handleNav("#pricing")}
             >Pricing</a>
+            <a href="/#changelog" class="text-gray-300 text-lg font-medium hover:text-white hover:underline max-md:hidden"
+                onClick={handleNav("#changelog")}
+            >What's new</a>
             <a href="/#contact" class="text-gray-300 text-lg font-medium hover:text-white hover:underline max-md:hidden"
                 onClick={handleNav("#contact")}
             >Contact</a>

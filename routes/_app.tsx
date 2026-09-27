@@ -6,7 +6,7 @@ export default function App({ Component }: PageProps) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vibe Coder - Let AI do your roblox scripting.</title>
-        <meta name="description" content="Vibe Coder is an AI-powered Roblox Studio plugin that automates scripting, supports all major LLMs, and helps you create, edit, and manage scripts effortlessly." />
+        <meta name="description" content="Vibe Coder is an AI coding agent inside Roblox Studio. Describe what you want and it reads your project, edits across your scripts, and queues every change for you to accept or reject. Free to start, no API key needed." />
         <meta name="keywords" content="Roblox, AI, scripting, plugin, Vibe Coder, Roblox Studio, automation, GPT, Gemini, Claude, game development, code assistant" />
         <meta name="author" content="keewinek" />
 

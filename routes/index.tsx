@@ -2,6 +2,8 @@ import NavBar from "../islands/Nav.tsx";
 import * as s from "../islands/scroll_reveal.tsx";
 import DownloadButton from "../islands/DownloadButton.tsx";
 import NewsPopup from "../islands/NewsPopup.tsx";
+import { DOWNLOAD_FILE_NAME, DOWNLOAD_LINK, PLUGIN_VERSION } from "../config/version.ts";
+import { RELEASES } from "../config/changelog.ts";
 
 // Add type for product info
 interface GamepassProductInfo {
@@ -9,8 +11,6 @@ interface GamepassProductInfo {
 }
 
 export default async function Home() {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.5.rbxmx";
-  const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
   const GAMEPASS_LINK = "https://www.roblox.com/catalog/79884753121491/Vibe-Coder-PRO"
 
   // Default price fallback
@@ -29,6 +29,17 @@ export default async function Home() {
 					<h2 class="text-white text-2xl md:text-4xl font-bold text-left mb-4 w-full max-md:mt-4 max-md:text-center opacity-90">
 						Let AI do your scripting.
 					</h2>
+					<a
+						href="/#changelog"
+						class="group mb-4 w-full max-md:mx-auto max-md:w-fit flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-200"
+					>
+						<span class="bg-purple-600/30 border border-purple-400/40 text-purple-100 font-bold px-2 py-[0.15rem] rounded-md">
+							v{PLUGIN_VERSION}
+						</span>
+						<span class="group-hover:underline">
+							Surgical edits, protected from overwrites — see what's new
+						</span>
+					</a>
 					{/* <NewsPopup /> */}
 					<DownloadButton
 						href={DOWNLOAD_LINK}
@@ -45,17 +56,24 @@ export default async function Home() {
 						<div class="flex flex-col gap-4">
 							{/* User message */}
 							<div class="flex flex-row items-start gap-2">
-								<div class="bg-[#5b6b7a] text-white px-4 py-2 rounded-lg font-semibold w-fit">make this part a kill part</div>
+								<div class="bg-[#5b6b7a] text-white px-4 py-2 rounded-lg font-semibold w-fit">add a stamina system to my sprint script</div>
 							</div>
 							{/* AI response */}
 							<div class="flex flex-row items-end gap-2">
 								<div class="bg-[#39343a] text-gray-100 px-4 py-2 rounded-lg w-fit">
-									<p>I will now make the selected part a kill part. When a player touches it, their character will be eliminated.</p>
-									<div class="flex flex-row items-center gap-2 border-[#ffffff10] border-[1px] rounded-lg w-fit px-2 my-2">
-										<i class="fa-solid fa-pen-to-square text-gray-200 text-4xl"></i>
-										<div class="px-2 py-[0.25rem] mt-2 rounded-lg w-fit">
-											<p>Model has edited your scripts.</p>
-											<p class="text-white text-sm bg-red-400 w-fit mt-[0.25rem] rounded-lg px-2 mb-[0.5rem]">Revert changes</p>
+									<p>Read SprintController and StaminaGui. I've queued a drain-and-regen loop plus the bar update — review the changes below.</p>
+									<div class="flex flex-col gap-2 border-[#ffffff10] border-[1px] rounded-lg w-fit px-3 py-2 my-2">
+										<div class="flex flex-row items-center gap-2">
+											<i class="fa-solid fa-pen-to-square text-gray-200 text-xl"></i>
+											<p class="text-sm">Edit · StarterPlayerScripts.SprintController</p>
+										</div>
+										<div class="flex flex-row items-center gap-2">
+											<i class="fa-solid fa-pen-to-square text-gray-200 text-xl"></i>
+											<p class="text-sm">Edit · StarterGui.StaminaGui.Bar</p>
+										</div>
+										<div class="flex flex-row items-center gap-2 mt-1">
+											<p class="text-white text-sm bg-green-500 w-fit rounded-lg px-2 py-[0.1rem]">Accept all</p>
+											<p class="text-white text-sm bg-red-400 w-fit rounded-lg px-2 py-[0.1rem]">Reject</p>
 										</div>
 									</div>
 								</div>
@@ -69,8 +87,13 @@ export default async function Home() {
 		<div class="mx-auto w-full max-w-[40rem] mt-8 max-md:px-8" id="about">
 			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-16">You don't have to script anymore.</s.ScrollH2>
 			<s.ScrollP class="text-xl text-gray-200 text-justify mt-8">
-				Yeah, really. Just select an script in the explorer and tell Vibe Coder what it should become - an leaderstats creator, datastore handler or
-				an kill brick script. Vibe Coder will look at your project's hierarhy and take scripting decisions for you. It will also edit your scripts.
+				Yeah, really. Just say what you want — a leaderstats system, a datastore handler, a kill brick — and Vibe Coder gets to work. It explores
+				your project's hierarchy, reads the scripts it needs, and edits across as many of them as the job takes. You don't have to select anything
+				first, though you can point it at something with an @mention or a selection when you want to be specific.
+			</s.ScrollP>
+			<s.ScrollP class="text-xl text-gray-200 text-justify mt-6">
+				Nothing touches your code until you say so. Every change arrives as a card you Accept or Reject, and since v{PLUGIN_VERSION} an edit is
+				refused outright if you changed that script yourself in the meantime.
 			</s.ScrollP>
 
 			<s.ScrollIMG 
@@ -82,8 +105,13 @@ export default async function Home() {
 		<div class="mx-auto w-full max-w-[40rem] mt-24 max-md:px-8">
 			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-8">Batteries included</s.ScrollH2>
 			<s.ScrollP class="text-xl text-gray-200 text-justify mt-8">
-				Vibe Coder supports all popular LLM's, including Gemini 2.5 Flash, Gemini 2.5 Pro, Gpt 4.1, Gpt 4o, Claude 4 Sonnet and Claude 3 Sonnet.
-				If you want another model to be added, just contact me.
+				The default <span class="font-bold text-white">Auto</span> model needs no setup and no API key — it routes your request through our gateway
+				across several providers and fails over to the next one when one is rate limited or down. It's free for everyone, and it's what the agent
+				runs on.
+			</s.ScrollP>
+			<s.ScrollP class="text-xl text-gray-200 text-justify mt-6">
+				Prefer your own model? PRO unlocks the model picker, where you can bring your own API key for providers like Gemini, OpenAI and Anthropic.
+				If you want another one added, just contact me.
 			</s.ScrollP>
 
 			<s.ScrollIMG  
@@ -101,9 +129,9 @@ export default async function Home() {
 					<p class="text-lg text-gray-300 mb-6 text-center">Get started with the essentials, no cost.</p>
 					<ul class="text-gray-200 text-base mb-8 space-y-2 w-full">
 						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 5 messages a day</li>
-						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Access to Gemini 2.5 Flash</li>
-						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Custom API keys</li>
-						<li class="flex items-center gap-2"><span class="text-red-400">✗</span> No access to other language models</li>
+						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Auto model — no API key needed</li>
+						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Full agent, tools and diff review</li>
+						<li class="flex items-center gap-2"><span class="text-red-400">✗</span> No model picker or custom API keys</li>
 						<li class="flex items-center gap-2"><span class="text-red-400">✗</span> No priority support</li>
 					</ul>
 					<div class="text-4xl font-extrabold text-white mb-4">Free</div>
@@ -122,9 +150,10 @@ export default async function Home() {
 					<p class="text-lg text-gray-100 mb-6 text-center">Unlock all features and premium models.</p>
 					<ul class="text-white text-base mb-8 space-y-2 w-full">
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Unlimited messages</li>
-						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Access to all LLMs (Gemini, GPT, Claude, etc.)</li>
+						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Everything in FREE, including Auto</li>
+						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Model picker (Gemini, GPT, Claude, etc.)</li>
+						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Bring your own API keys</li>
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Priority support</li>
-						<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Custom API keys</li>
 						<li class="flex items-center gap-2"><span class="text-green-200">✓</span> Early access to new features</li>
 					</ul>
 					<div className="text-4xl font-extrabold text-white mb-4 flex items-center gap-2">
@@ -145,7 +174,51 @@ export default async function Home() {
 					</a>
 				</div>
 			</div>
-			<p class="text-gray-200 text-sm opacity-75 text-center mt-4">No free GPT, Claude tokens for PRO tier! You need to enter your own API keys for theese models.</p>
+			<p class="text-gray-200 text-sm opacity-75 text-center mt-4">PRO does not include GPT or Claude tokens — those models run on your own API keys. Auto is covered for everyone.</p>
+		</div>
+
+		<div class="mx-auto w-full max-w-[44rem] mt-24 max-md:px-8" id="changelog">
+			<s.ScrollH2 class="text-5xl text-white text-center font-bold py-8">What's new</s.ScrollH2>
+			<div class="flex flex-col gap-10 mt-8">
+				{RELEASES.map((release, releaseIndex) => (
+					<div key={release.version} class="bg-[#232127] rounded-2xl shadow-lg p-8">
+						<div class="flex flex-wrap items-center gap-3 mb-4">
+							<h3 class="text-3xl font-bold text-white">v{release.version}</h3>
+							{releaseIndex === 0 && (
+								<span class="bg-purple-600/30 border border-purple-400/40 text-purple-100 text-xs font-bold px-2 py-[0.2rem] rounded-md uppercase tracking-wide">
+									Latest
+								</span>
+							)}
+							<span class="text-gray-400 text-base ml-auto">{release.date}</span>
+						</div>
+						<p class="text-lg text-gray-200 mb-6">{release.summary}</p>
+						<ul class="flex flex-col gap-4">
+							{release.notes.map((note) => (
+								<li key={note.title} class="flex gap-3">
+									<i class="fa-solid fa-circle-check text-green-400 mt-[0.35rem]"></i>
+									<div>
+										<p class="text-white font-bold">{note.title}</p>
+										<p class="text-gray-300">{note.body}</p>
+									</div>
+								</li>
+							))}
+						</ul>
+						{releaseIndex === 0 && (
+							<DownloadButton
+								href={DOWNLOAD_LINK}
+								filename={DOWNLOAD_FILE_NAME}
+								class="mt-8 bg-white text-[#232127] font-bold px-6 py-2 rounded-lg shadow hover:bg-gray-200 transition-colors duration-200 w-full flex items-center justify-center gap-2"
+							>
+								<img src="RobloxStudioIcon.png" alt="Roblox Studio Icon" class="h-6 w-6 inline-block"/>
+								<span>Update to v{release.version}</span>
+							</DownloadButton>
+						)}
+					</div>
+				))}
+			</div>
+			<p class="text-gray-200 text-sm opacity-75 text-center mt-6">
+				Updating? Replace the old <span class="bg-black p-1 rounded">.rbxmx</span> in your Roblox Studio plugins folder with the new one, then restart Studio.
+			</p>
 		</div>
 	
 		<div class="mx-auto w-full max-w-[40rem] mt-24 max-md:px-8" id="contact">
