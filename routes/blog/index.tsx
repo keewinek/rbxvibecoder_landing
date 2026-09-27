@@ -1,5 +1,6 @@
 import { PageProps } from "$fresh/server.ts";
 import NavBar from "../../islands/Nav.tsx";
+import { DOWNLOAD_LINK } from "../../config/version.ts";
 
 interface Article {
   type: string;
@@ -17,7 +18,6 @@ interface ArticlesResponse {
 }
 
 export default async function BlogIndex(_props: PageProps) {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.5.rbxmx";
   const sourceIds = "rbxvibecoder_projects_review,rbxvibecoder_personalized_article";
   
   let articles: Article[] = [];

@@ -1,9 +1,8 @@
 import NavBar from "../islands/Nav.tsx";
 import * as s from "../islands/scroll_reveal.tsx";
+import { DOWNLOAD_LINK } from "../config/version.ts";
 
 export default function Home() {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.5.rbxmx";
-  const DOWNLOAD_FILE_NAME = DOWNLOAD_LINK.split("/").pop() || "";
   return (
     <div class="bg-gray-950 w-full h-full min-h-screen overflow-y-hidden overflow-x-hidden">
 		<NavBar DOWNLOAD_LINK={DOWNLOAD_LINK}/>

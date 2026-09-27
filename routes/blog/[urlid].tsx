@@ -1,9 +1,9 @@
 import { PageProps } from "$fresh/server.ts";
 import NavBar from "../../islands/Nav.tsx";
 import ArticleLoader from "../../islands/ArticleLoader.tsx";
+import { DOWNLOAD_LINK } from "../../config/version.ts";
 
 export default function ArticlePage(props: PageProps) {
-  const DOWNLOAD_LINK = "/downloads/Vibe Coder v0.5.rbxmx";
   const urlid = props.params?.urlid;
   const sourceIds = "rbxvibecoder_projects_review,rbxvibecoder_personalized_article";
   
